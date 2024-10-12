@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Inserisci Cliente</h1>
-    <form action="eseguiInserisciCliente.php" >
+    <form action="eseguiInserisciCliente.php" method="POST">
         CODICE: <input type="number" name="codice"><br><br>
         DENOMINAZIONE: <input type="text" name="denominazione"><br><br>
         INDIRIZZO: <input type="text" name="indirizzo"><br><br>
