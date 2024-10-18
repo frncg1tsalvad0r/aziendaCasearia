@@ -8,9 +8,22 @@
 <body>
     <h1>Inserisci Ordine</h1>
     <?php
-        $conn = mysqli_connect("127.0.0.1", "root", "", "aziendacasearia");
+        require_once("connetti.php");
+    
+        if(isset($_POST["inserisci"])) {
+            
+            $sql = "INSERT INTO ordini (codice, codice_cliente, data, importo) 
+                VALUES ($_POST[codice], $_POST[codice_cliente], 
+                '$_POST[data]', $_POST[importo])";
+            mysqli_query($conn, $sql);
+            header("Location: inserisciRigheOrdine.php");
+            die();
+        }
     ?>
-    <form action="eseguiInserisciOrdine.php" method="POST">
+    
+    
+    <!--<form action="eseguiInserisciOrdine.php" method="POST">-->
+    <form action="inserisciOrdine.php" method="POST">   
         CODICE: <input type="number" name="codice" placeholder="codice"><br><br>
         CLIENTE:
         <?php
@@ -26,7 +39,7 @@
         ?><br><br>
         DATA: <input type="date" name="data" placeholder="data" ><br><br>
         IMPORTO: <input type="text" name="importo" pattern="[0-9]+" placeholder="importo" ><br><br>
-        <input type="submit" value="Inserisci">
+        <input type="submit" name="inserisci" value="Inserisci">
     </form>
 </body>
 </html>
