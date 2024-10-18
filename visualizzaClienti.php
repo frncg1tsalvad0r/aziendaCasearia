@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-    <h1>Visualizza Prodotti</h1>
+    <h1>Visualizza Clienti</h1>
     <?php
         $conn = mysqli_connect("127.0.0.1", "root", "", "aziendacasearia");
         $sql = "SELECT * FROM clienti";
@@ -24,14 +24,14 @@
         $cliente = mysqli_fetch_assoc($clienti);
         echo "<table>";
         echo "<tr><th>CODICE</th><th>DENOMINAZIONE</th><th>INDIRIZZO</th><th>REGIONE</th></tr>";
-        while($prodotto) {
+        while($cliente) {
             echo "<tr>";
-            echo "<td>$prodotto[codice]</td>";
-            echo "<td>$prodotto[denominazione]</td>";
-            echo "<td>$prodotto[indirizzo]</td>";
-            echo "<td>$prodotto[regione]</td>";
+            echo "<td>$cliente[codice]</td>";
+            echo "<td>$cliente[denominazione]</td>";
+            echo "<td>$cliente[indirizzo]</td>";
+            echo "<td>$cliente[regione]</td>";
             echo "</tr>";
-            $prodotto = mysqli_fetch_assoc($prodotti);
+            $cliente = mysqli_fetch_assoc($clienti);
         }
         echo "</table>";
     ?>

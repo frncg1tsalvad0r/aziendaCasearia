@@ -11,13 +11,13 @@
     if(isset($_POST["inserisci"])) {
         require_once("connetti.php");
         $sql = "INSERT INTO clienti (codice, denominazione, indirizzo, regione) 
-                VALUES ('$_POST[codice]', $_POST[denominazione], 
-                $_POST[indirizzo], $_POST[regione])";
+                VALUES ($_POST[codice], '$_POST[denominazione]', '$_POST[indirizzo]', '$_POST[regione]')";
+               //print_r($sql); die();
         mysqli_query($conn, $sql);
         header("Location: visualizzaClienti.php");
     }
-
     ?>
+
     <form action="inserisciCliente.php" method="POST">
         CODICE: <input type="number" name="codice"><br><br>
         DENOMINAZIONE: <input type="text" name="denominazione"><br><br>
