@@ -16,16 +16,27 @@
     </style>
 </head>
 <body>
+    <?php
+    require_once("connetti.php");
+    if(isset($_POST['elimina'])) {
+        // Ho schiacciato il tasto elimina
+        $sql = "DELETE FROM clienti WHERE codice=$_POST[selezione]";
+        mysqli_query($conn, $sql);
+        
+    }
+    ?>
     <h1>Visualizza Clienti</h1>
     <?php
-        $conn = mysqli_connect("127.0.0.1", "root", "", "aziendacasearia");
+        
         $sql = "SELECT * FROM clienti";
         $clienti = mysqli_query($conn, $sql);
         $cliente = mysqli_fetch_assoc($clienti);
+        echo "<form>";
         echo "<table>";
-        echo "<tr><th>CODICE</th><th>DENOMINAZIONE</th><th>INDIRIZZO</th><th>REGIONE</th></tr>";
+        echo "<tr><th>🖋️</th><th>CODICE</th><th>DENOMINAZIONE</th><th>INDIRIZZO</th><th>REGIONE</th></tr>";
         while($cliente) {
             echo "<tr>";
+            echo "<td><input type='radio' name='selezione' value='$cliente[codice]'></td>";
             echo "<td>$cliente[codice]</td>";
             echo "<td>$cliente[denominazione]</td>";
             echo "<td>$cliente[indirizzo]</td>";
@@ -34,6 +45,9 @@
             $cliente = mysqli_fetch_assoc($clienti);
         }
         echo "</table>";
+        echo "<input type='submit' name='elimina' value='Elimina' formmethod='POST' formaction='visualizzaClienti.php'>";
+        echo "<input type='submit' name='modifica' value='Modifica' formmethod='POST' formaction='modificaCliente.php'>";
+        echo "</form>";
     ?>
 </body>
 </html>
