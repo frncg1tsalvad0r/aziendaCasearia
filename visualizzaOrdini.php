@@ -32,7 +32,13 @@
         while($ordine) {
             echo "<tr>";
             echo "<td>$ordine[codice]</td>";
-            echo "<td>$ordine[codice_cliente]</td>";
+
+            /*echo "<td>$ordine[codice_cliente]</td>";*/
+            $sql = "SELECT * FROM clienti WHERE codice=$ordine[codice_cliente]";
+            $clienti = mysqli_query($conn, $sql);
+            $cliente = mysqli_fetch_assoc($clienti);
+            echo "<td>$ordine[codice_cliente]-$cliente[denominazione]</td>";
+
             echo "<td>$ordine[data]</td>";
             echo "<td>$ordine[importo]</td>";
             echo "<form method='POST' action='modificaOrdine.php'>";
