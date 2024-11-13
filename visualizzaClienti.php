@@ -26,12 +26,12 @@
         echo "<tr><th>CODICE</th><th>DENOMINAZIONE</th><th>INDIRIZZO</th><th>REGIONE</th></tr>";
         while($cliente) {
             echo "<tr>";
-            echo "<td>$prodotto[codice]</td>";
-            echo "<td>$prodotto[denominazione]</td>";
-            echo "<td>$prodotto[indirizzo]</td>";
-            echo "<td>$prodotto[regione]</td>";
+            echo "<td>$cliente[codice]</td>";
+            echo "<td>$cliente[denominazione]</td>";
+            echo "<td>$cliente[indirizzo]</td>";
+            echo "<td>$cliente[regione]</td>";
             echo "</tr>";
-            $prodotto = mysqli_fetch_assoc($prodotti);
+            $cliente = mysqli_fetch_assoc($clienti);
         }
         echo "</table>";
     ?>
