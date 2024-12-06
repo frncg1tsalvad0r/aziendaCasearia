@@ -15,8 +15,9 @@
             $sql = "INSERT INTO ordini (codice, codice_cliente, data, importo) 
                 VALUES ($_POST[codice], $_POST[codice_cliente], 
                 '$_POST[data]', $_POST[importo])";
+            //print_r($sql);die();
             mysqli_query($conn, $sql);
-            header("Location: inserisciRigheOrdine.php");
+            header("Location: visualizzaOrdini.php");
             die();
         }
     ?>
@@ -38,7 +39,7 @@
             echo "</select>";
         ?><br><br>
         DATA: <input type="date" name="data" placeholder="data" ><br><br>
-        IMPORTO: <input type="text" name="importo" pattern="[0-9]+" placeholder="importo" ><br><br>
+        IMPORTO: <input type="text" name="importo" pattern="[0-9]+" placeholder="importo" required><br><br>
         <input type="submit" name="inserisci" value="Inserisci">
     </form>
 </body>
